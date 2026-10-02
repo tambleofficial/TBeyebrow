@@ -4,7 +4,7 @@
 1. 이 폴더 안의 파일 전체를 GitHub 저장소 루트에 올립니다. (index.html이 루트에 있어야 함)
 2. Cloudflare Pages → 프로젝트 생성 → GitHub 저장소 연결
 3. 프레임워크: 없음 / 빌드 명령: 비워둠 / 출력 디렉터리: /
-4. 커스텀 도메인 연결 (현재 임시 도메인 tbbrow.co.kr 로 작성됨 → 실제 도메인으로 전체 검색·치환)
+4. 현재 배포 도메인: https://tbeyebrow.pages.dev/
 
 ## 배포 체크
 - 빌드 명령 없음. package.json·node_modules·빌드 도구 없음 → 저장소에 올리면 그대로 배포됩니다.
@@ -24,7 +24,7 @@
 - /find/ (지점 찾기), /first-visit.html, /process/, /space/, /faq/, /contact/
 
 ## RSS
-- https://tbbrow.co.kr/rss.xml → 네이버 서치어드바이저 > 요청 > RSS 제출에 등록
+- https://tbeyebrow.pages.dev/rss.xml → 네이버 서치어드바이저 > 요청 > RSS 제출에 등록
 - 새 페이지를 만들면 rss.xml 에 <item> 추가, sitemap.xml 에 <url> 추가
 
 ## 지역 페이지 추가 시

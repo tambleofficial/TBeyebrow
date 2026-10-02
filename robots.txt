@@ -4,4 +4,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://tbbrow.co.kr/sitemap.xml
+Sitemap: https://tbeyebrow.pages.dev/sitemap.xml
