@@ -40,3 +40,16 @@
 - 8개 카드가 각각 실제 안내 페이지로 연결됩니다. (a.space-item > figure > .space-card + figcaption)
 - 연결: /space/, /first-visit.html, /service/natural/, /service/combo/, /service/powder/, /service/male/, /service/retouch/, /faq/
 - 이미지는 assets/images/space-1~8.webp (로컬). 카드별 이미지를 바꾸려면 같은 파일명으로 교체하세요.
+
+## 네이버 IndexNow 자동 전송
+- 루트의 `964980ce1cbe6b73c14ad93278d0beb0.txt` 파일이 IndexNow 소유 확인 키입니다.
+- `.github/workflows/naver-indexnow.yml`이 기본 브랜치에 push될 때 실행됩니다.
+- GitHub의 Cloudflare Pages 배포 check가 성공한 뒤에만 네이버 IndexNow API를 호출합니다.
+- 이번 커밋에서 새로 생성/수정/삭제된 `.html` 페이지만 자동으로 URL로 변환해 전송합니다.
+  - `index.html` → `/`
+  - `busan/index.html` → `/busan/`
+  - `first-visit.html` → `/first-visit.html`
+  - `404.html`과 네이버 소유확인 HTML은 제외합니다.
+- 삭제된 HTML도 기존 URL을 IndexNow로 전송하므로 404/리다이렉트 변경을 네이버에 빠르게 알릴 수 있습니다.
+- GitHub Actions의 `Naver IndexNow` 워크플로를 수동 실행할 때 `mode=all`을 선택하면 `sitemap.xml`의 URL 전체를 전송할 수 있습니다. 일반 배포에서는 `changed` 방식 사용을 권장합니다.
+- 별도 GitHub Secret은 필요하지 않습니다. IndexNow 키는 원래 웹 루트의 공개 txt 파일로 검증되는 값입니다.
