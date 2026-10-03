@@ -1,0 +1,30 @@
+{
+  "deployment_type": "incremental",
+  "region": "부산",
+  "added": [
+    "busan/index.html",
+    "busan/natural/index.html",
+    "busan/combo/index.html",
+    "busan/powder/index.html",
+    "busan/male/index.html",
+    "busan/retouch/index.html"
+  ],
+  "updated": [
+    "sitemap.xml",
+    "rss.xml"
+  ],
+  "deleted": [],
+  "support_files": [
+    "DEPLOY.txt",
+    "manifest.json"
+  ],
+  "upload_order": [
+    "TBeyebrow-busan-incremental-20261003.zip"
+  ],
+  "notes": [
+    "루트 /index.html 미수정",
+    "기존 공통 CSS/JS 미수정",
+    "기존 hero.webp 경로 재사용",
+    "소스에 부산 구·군별 실제 지점 정보가 없어 확인되지 않은 하위 구·군 페이지는 생성하지 않음"
+  ]
+}
