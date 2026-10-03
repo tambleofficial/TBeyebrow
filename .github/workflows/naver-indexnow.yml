@@ -1,0 +1,256 @@
+name: Naver IndexNow
+
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "전송 범위 (changed: 변경된 HTML만, all: sitemap 전체)"
+        required: true
+        default: changed
+        type: choice
+        options:
+          - changed
+          - all
+
+permissions:
+  contents: read
+  checks: read
+
+jobs:
+  submit-indexnow:
+    if: github.ref_name == github.event.repository.default_branch
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    env:
+      SITE_ORIGIN: https://tbeyebrow.pages.dev
+      SITE_HOST: tbeyebrow.pages.dev
+      INDEXNOW_KEY: 964980ce1cbe6b73c14ad93278d0beb0
+      KEY_LOCATION: https://tbeyebrow.pages.dev/964980ce1cbe6b73c14ad93278d0beb0.txt
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for Cloudflare Pages production deployment
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          echo "Cloudflare Pages 배포 상태를 확인합니다: ${GITHUB_SHA}"
+          found=0
+          success=0
+
+          for attempt in $(seq 1 36); do
+            checks="$(gh api \
+              -H 'Accept: application/vnd.github+json' \
+              "repos/${GITHUB_REPOSITORY}/commits/${GITHUB_SHA}/check-runs?per_page=100")"
+
+            cf_checks="$(echo "$checks" | jq -c '[.check_runs[] | select(.app.slug == "cloudflare-pages" or .app.slug == "cloudflare-workers-and-pages")]')"
+            count="$(echo "$cf_checks" | jq 'length')"
+
+            if [ "$count" -eq 0 ]; then
+              echo "Cloudflare Pages check run을 아직 찾지 못했습니다. (${attempt}/36)"
+              sleep 10
+              continue
+            fi
+
+            found=1
+            echo "$cf_checks" | jq -r '.[] | "Cloudflare: \(.name) | status=\(.status) | conclusion=\(.conclusion // "-")"'
+
+            failed="$(echo "$cf_checks" | jq '[.[] | select(.status == "completed" and (.conclusion != "success" and .conclusion != "skipped"))] | length')"
+
+            if [ "$failed" -gt 0 ]; then
+              echo "Cloudflare Pages 배포가 실패/취소되어 IndexNow 전송을 중단합니다."
+              exit 1
+            fi
+
+            pending="$(echo "$cf_checks" | jq '[.[] | select(.status != "completed")] | length')"
+            completed_success="$(echo "$cf_checks" | jq '[.[] | select(.status == "completed" and (.conclusion == "success" or .conclusion == "skipped"))] | length')"
+
+            if [ "$pending" -eq 0 ] && [ "$completed_success" -gt 0 ]; then
+              success=1
+              break
+            fi
+
+            sleep 10
+          done
+
+          if [ "$found" -eq 0 ]; then
+            echo "Cloudflare Pages check run을 확인하지 못했습니다."
+            exit 1
+          fi
+
+          if [ "$success" -ne 1 ]; then
+            echo "Cloudflare Pages 배포 완료를 확인하지 못했습니다."
+            exit 1
+          fi
+
+          echo "Cloudflare Pages 배포 성공을 확인했습니다."
+
+      - name: Verify IndexNow key on production
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          live_key="$(curl --fail --silent --show-error --location "$KEY_LOCATION" | tr -d '\r\n')"
+
+          if [ "$live_key" != "$INDEXNOW_KEY" ]; then
+            echo "배포된 IndexNow key 파일의 내용이 일치하지 않습니다."
+            exit 1
+          fi
+
+          echo "IndexNow key 파일 확인 완료: $KEY_LOCATION"
+
+      - name: Build URL list
+        id: urls
+        shell: bash
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          DISPATCH_MODE: ${{ inputs.mode }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+
+          python3 - <<'PY'
+          import os
+          import re
+          import subprocess
+          import xml.etree.ElementTree as ET
+
+          origin = os.environ['SITE_ORIGIN'].rstrip('/')
+          event = os.environ.get('EVENT_NAME', '')
+          dispatch_mode = os.environ.get('DISPATCH_MODE') or 'changed'
+          before = os.environ.get('BEFORE_SHA', '')
+          after = os.environ['GITHUB_SHA']
+
+          def path_to_url(path: str):
+              path = path.strip().lstrip('./')
+
+              if not path.endswith('.html'):
+                  return None
+
+              if path == '404.html':
+                  return None
+
+              if re.fullmatch(r'naver[a-zA-Z0-9_-]+\.html', path):
+                  return None
+
+              if path == 'index.html':
+                  return origin + '/'
+
+              if path.endswith('/index.html'):
+                  return origin + '/' + path[:-len('index.html')]
+
+              return origin + '/' + path
+
+          urls = set()
+
+          if event == 'workflow_dispatch' and dispatch_mode == 'all':
+              tree = ET.parse('sitemap.xml')
+              ns = {'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9'}
+
+              for loc in tree.findall('.//sm:loc', ns):
+                  if loc.text and loc.text.strip().startswith(origin + '/'):
+                      urls.add(loc.text.strip())
+
+          else:
+              zero = '0' * 40
+
+              if before and before != zero:
+                  cmd = ['git', 'diff', '--name-status', '--find-renames', before, after]
+              else:
+                  cmd = ['git', 'show', '--pretty=', '--name-status', '--find-renames', after]
+
+              output = subprocess.check_output(cmd, text=True)
+
+              for raw in output.splitlines():
+                  parts = raw.split('\t')
+
+                  if not parts:
+                      continue
+
+                  status = parts[0]
+                  paths = []
+
+                  if status.startswith('R') or status.startswith('C'):
+                      if len(parts) >= 3:
+                          paths = [parts[1], parts[2]]
+                  elif len(parts) >= 2:
+                      paths = [parts[1]]
+
+                  for path in paths:
+                      url = path_to_url(path)
+                      if url:
+                          urls.add(url)
+
+          ordered = sorted(urls)
+
+          with open('indexnow-urls.txt', 'w', encoding='utf-8') as f:
+              for url in ordered:
+                  f.write(url + '\n')
+
+          print(f'IndexNow 대상 URL: {len(ordered)}개')
+
+          for url in ordered:
+              print(url)
+          PY
+
+          count="$(grep -cve '^$' indexnow-urls.txt || true)"
+          echo "count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Submit changed URLs to Naver IndexNow
+        if: steps.urls.outputs.count != '0'
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          python3 - <<'PY'
+          import json
+          import os
+
+          with open('indexnow-urls.txt', encoding='utf-8') as f:
+              urls = [line.strip() for line in f if line.strip()]
+
+          payload = {
+              'host': os.environ['SITE_HOST'],
+              'key': os.environ['INDEXNOW_KEY'],
+              'keyLocation': os.environ['KEY_LOCATION'],
+              'urlList': urls,
+          }
+
+          with open('indexnow-payload.json', 'w', encoding='utf-8') as f:
+              json.dump(payload, f, ensure_ascii=False)
+          PY
+
+          http_code="$(curl --silent --show-error \
+            --output indexnow-response.txt \
+            --write-out '%{http_code}' \
+            --request POST 'https://searchadvisor.naver.com/indexnow' \
+            --header 'Content-Type: application/json; charset=utf-8' \
+            --data-binary @indexnow-payload.json)"
+
+          echo "Naver IndexNow HTTP status: $http_code"
+
+          if [ -s indexnow-response.txt ]; then
+            cat indexnow-response.txt
+            echo
+          fi
+
+          case "$http_code" in
+            200|202)
+              echo "IndexNow 전송 완료"
+              ;;
+            *)
+              echo "IndexNow 전송 실패 (HTTP $http_code)"
+              exit 1
+              ;;
+          esac
+
+      - name: Nothing to submit
+        if: steps.urls.outputs.count == '0'
+        run: echo "이번 배포에는 전송할 HTML URL이 없어 IndexNow 전송을 생략합니다."
