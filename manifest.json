@@ -1,30 +1,91 @@
 {
-  "deployment_type": "incremental",
-  "region": "부산",
-  "added": [
-    "busan/index.html",
-    "busan/natural/index.html",
-    "busan/combo/index.html",
-    "busan/powder/index.html",
-    "busan/male/index.html",
-    "busan/retouch/index.html"
-  ],
-  "updated": [
-    "sitemap.xml",
-    "rss.xml"
-  ],
-  "deleted": [],
-  "support_files": [
-    "DEPLOY.txt",
-    "manifest.json"
-  ],
-  "upload_order": [
-    "TBeyebrow-busan-incremental-20261003.zip"
-  ],
-  "notes": [
-    "루트 /index.html 미수정",
-    "기존 공통 CSS/JS 미수정",
-    "기존 hero.webp 경로 재사용",
-    "소스에 부산 구·군별 실제 지점 정보가 없어 확인되지 않은 하위 구·군 페이지는 생성하지 않음"
+  "project": "TB눈썹문신 부산 지역 추가",
+  "origin": "https://tbeyebrow.pages.dev",
+  "generated": "2026-10-03",
+  "files": [
+    {
+      "path": "DEPLOY.txt",
+      "action": "added",
+      "bytes": 1473,
+      "sha256": "b3a20b38c5a78d821da25358baf4e72c72a4072799ed5ea31ab9858a685b2f1a"
+    },
+    {
+      "path": "assets/images/region/busan-combo.webp",
+      "action": "added",
+      "bytes": 125838,
+      "sha256": "5405b734a52eb9ca1a940d6f6b7558030fbebac810bb5b0eeb5466cc7de16e26"
+    },
+    {
+      "path": "assets/images/region/busan-male.webp",
+      "action": "added",
+      "bytes": 85434,
+      "sha256": "171294a0f7a52798cf7062df4a0321114af607f577c84ca3b106ff10f77ec34a"
+    },
+    {
+      "path": "assets/images/region/busan-natural.webp",
+      "action": "added",
+      "bytes": 116534,
+      "sha256": "86285d78956967d850d66bcecf4240036cd66d63debf71927696f3499334933e"
+    },
+    {
+      "path": "assets/images/region/busan-powder.webp",
+      "action": "added",
+      "bytes": 97854,
+      "sha256": "c64ff20863faa7ec7226f7efb064036ace9c2785336728e62fc9a46e08bda271"
+    },
+    {
+      "path": "assets/images/region/busan-retouch.webp",
+      "action": "added",
+      "bytes": 146846,
+      "sha256": "eb027dd799b73b1318fcfd92e7c90929ee0da8aa7da5ba5f26f4a4247979fea7"
+    },
+    {
+      "path": "busan/combo/index.html",
+      "action": "added",
+      "bytes": 12820,
+      "sha256": "6ad0fcc6aecdafe3c23448c946cede3fda01f09c5753eb352d45cfce2f6f2313"
+    },
+    {
+      "path": "busan/index.html",
+      "action": "added",
+      "bytes": 14162,
+      "sha256": "99308326531c49bb2b3eb83c62baf66cb36bc6166953bfd9ae1955578408ab58"
+    },
+    {
+      "path": "busan/male/index.html",
+      "action": "added",
+      "bytes": 12848,
+      "sha256": "421e76cf410a3b9ba4222019b94c16c3971cf069aaad741f772e7e20a932db63"
+    },
+    {
+      "path": "busan/natural/index.html",
+      "action": "added",
+      "bytes": 13220,
+      "sha256": "df13aa39298e16531df92a827abef19c2b1acd26de449b3785dbbe88fa456929"
+    },
+    {
+      "path": "busan/powder/index.html",
+      "action": "added",
+      "bytes": 12881,
+      "sha256": "0e6adfd1c5e250bc9edc7a343d04efb3db2486696b7538be0a5e9c6be08f1c6c"
+    },
+    {
+      "path": "busan/retouch/index.html",
+      "action": "added",
+      "bytes": 12981,
+      "sha256": "207816bfcaa05cfd0ceac59466a035cbc5e1faeed25386b0a21a047662fceeb3"
+    },
+    {
+      "path": "rss.xml",
+      "action": "modified",
+      "bytes": 12019,
+      "sha256": "b241af684bcc3e1b0cec378e4c9af1132132a1daf647b50121d142403d27f53f"
+    },
+    {
+      "path": "sitemap.xml",
+      "action": "modified",
+      "bytes": 2897,
+      "sha256": "ec2c58719dfa5fde2cf79d4740656c734b798252533a1abe403b13a26cf35e05"
+    }
   ]
 }
