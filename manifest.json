@@ -1,91 +1,290 @@
 {
-  "project": "TB눈썹문신 부산 지역 추가",
+  "project": "TB눈썹문신 지역추가",
   "origin": "https://tbeyebrow.pages.dev",
-  "generated": "2026-10-03",
+  "created": "2026-10-03T20:00:00+09:00",
+  "regions": [
+    "인천",
+    "대구",
+    "대전",
+    "광주"
+  ],
+  "file_count": 48,
   "files": [
     {
-      "path": "DEPLOY.txt",
+      "path": "assets/images/region/daegu-combo.webp",
       "action": "added",
-      "bytes": 1473,
-      "sha256": "b3a20b38c5a78d821da25358baf4e72c72a4072799ed5ea31ab9858a685b2f1a"
+      "bytes": 132756,
+      "sha256": "6ddc3a792c05ff2ae7a1d6f0bd9ac53ad331a2b2241fcbbf1608dcf086d79286"
     },
     {
-      "path": "assets/images/region/busan-combo.webp",
+      "path": "assets/images/region/daegu-male.webp",
       "action": "added",
-      "bytes": 125838,
-      "sha256": "5405b734a52eb9ca1a940d6f6b7558030fbebac810bb5b0eeb5466cc7de16e26"
+      "bytes": 96764,
+      "sha256": "f4707e8a0b060031dab2b0687cef067704830bf7ca7cead989d8b8500be71721"
     },
     {
-      "path": "assets/images/region/busan-male.webp",
+      "path": "assets/images/region/daegu-natural.webp",
       "action": "added",
-      "bytes": 85434,
-      "sha256": "171294a0f7a52798cf7062df4a0321114af607f577c84ca3b106ff10f77ec34a"
+      "bytes": 99286,
+      "sha256": "44704fcac401879460c3234c966ab4f4fb1eb76c79ec9da285e6379e42a3660a"
     },
     {
-      "path": "assets/images/region/busan-natural.webp",
+      "path": "assets/images/region/daegu-powder.webp",
       "action": "added",
-      "bytes": 116534,
-      "sha256": "86285d78956967d850d66bcecf4240036cd66d63debf71927696f3499334933e"
+      "bytes": 93530,
+      "sha256": "1abd94fd844d195d4175c21324f51532bd06aed37f533373d9390ca7c9593896"
     },
     {
-      "path": "assets/images/region/busan-powder.webp",
+      "path": "assets/images/region/daegu-retouch.webp",
       "action": "added",
-      "bytes": 97854,
-      "sha256": "c64ff20863faa7ec7226f7efb064036ace9c2785336728e62fc9a46e08bda271"
+      "bytes": 97856,
+      "sha256": "8c84aadaf7472c4733bacf4f1623aed2715e22904e4f078907d780bdb594576b"
     },
     {
-      "path": "assets/images/region/busan-retouch.webp",
+      "path": "assets/images/region/daejeon-combo.webp",
       "action": "added",
-      "bytes": 146846,
-      "sha256": "eb027dd799b73b1318fcfd92e7c90929ee0da8aa7da5ba5f26f4a4247979fea7"
+      "bytes": 86984,
+      "sha256": "a487276ff30d23fe8cc676d3ef2389913db2080882f3a4a852ae71e21d376767"
     },
     {
-      "path": "busan/combo/index.html",
+      "path": "assets/images/region/daejeon-male.webp",
       "action": "added",
-      "bytes": 12820,
-      "sha256": "6ad0fcc6aecdafe3c23448c946cede3fda01f09c5753eb352d45cfce2f6f2313"
+      "bytes": 131286,
+      "sha256": "25ac0a9e5928abe28dc6a9db5749ea38fbf3daf97de8b31988dd8ccbd2335142"
     },
     {
-      "path": "busan/index.html",
+      "path": "assets/images/region/daejeon-natural.webp",
       "action": "added",
-      "bytes": 14162,
-      "sha256": "99308326531c49bb2b3eb83c62baf66cb36bc6166953bfd9ae1955578408ab58"
+      "bytes": 85132,
+      "sha256": "460de9b84b361efdd3782e8fa39095ff9df2820145070f37f9b40e8f51566a53"
     },
     {
-      "path": "busan/male/index.html",
+      "path": "assets/images/region/daejeon-powder.webp",
       "action": "added",
-      "bytes": 12848,
-      "sha256": "421e76cf410a3b9ba4222019b94c16c3971cf069aaad741f772e7e20a932db63"
+      "bytes": 121278,
+      "sha256": "1c18f873ca7a9cf7f398321e2119a4dbb88d8066a5013976ed89b5fb6a4a5c8c"
     },
     {
-      "path": "busan/natural/index.html",
+      "path": "assets/images/region/daejeon-retouch.webp",
       "action": "added",
-      "bytes": 13220,
-      "sha256": "df13aa39298e16531df92a827abef19c2b1acd26de449b3785dbbe88fa456929"
+      "bytes": 113974,
+      "sha256": "3ca8f4035fdf30c1a69481f4493ae46a18a2c0e78fd83df0fd4b5a52c906efa4"
     },
     {
-      "path": "busan/powder/index.html",
+      "path": "assets/images/region/gwangju-combo.webp",
       "action": "added",
-      "bytes": 12881,
-      "sha256": "0e6adfd1c5e250bc9edc7a343d04efb3db2486696b7538be0a5e9c6be08f1c6c"
+      "bytes": 76430,
+      "sha256": "e22cd931df99e423f1034af095f25b3ce77a53cd1945e579b34e2adfed743cbc"
     },
     {
-      "path": "busan/retouch/index.html",
+      "path": "assets/images/region/gwangju-male.webp",
       "action": "added",
-      "bytes": 12981,
-      "sha256": "207816bfcaa05cfd0ceac59466a035cbc5e1faeed25386b0a21a047662fceeb3"
+      "bytes": 116604,
+      "sha256": "6f0b09b52a1807ff7d6c95c5af0e772babda441b40f4d9c0622d48a76d7366a7"
+    },
+    {
+      "path": "assets/images/region/gwangju-natural.webp",
+      "action": "added",
+      "bytes": 127702,
+      "sha256": "4e04bbc163491243c166daaee92695dd3503505dec59164b49ecd98b22454a53"
+    },
+    {
+      "path": "assets/images/region/gwangju-powder.webp",
+      "action": "added",
+      "bytes": 125062,
+      "sha256": "3ede0e01b121234704b6fca852c20a7bd1d5239ab225c0a0bb4a62154587c37f"
+    },
+    {
+      "path": "assets/images/region/gwangju-retouch.webp",
+      "action": "added",
+      "bytes": 125904,
+      "sha256": "6d709d2f6b662d4b74242a79c855be284ce8bbdae30ce84b8d8fadbec7c1d0bc"
+    },
+    {
+      "path": "assets/images/region/incheon-combo.webp",
+      "action": "added",
+      "bytes": 117520,
+      "sha256": "ae0c28f8cfa27ae929ab46d3c27814839708f6a8284ee7a6aaa68b1226645d2e"
+    },
+    {
+      "path": "assets/images/region/incheon-male.webp",
+      "action": "added",
+      "bytes": 109820,
+      "sha256": "eb9c858aac58c642fb951f9aba11f99e2dcdb41619f17612f02bd2440993d29c"
+    },
+    {
+      "path": "assets/images/region/incheon-natural.webp",
+      "action": "added",
+      "bytes": 107732,
+      "sha256": "f02c5d39127d8d208b44a6c3c294203cf475ac9194b0e06ef961038f7bcf7afd"
+    },
+    {
+      "path": "assets/images/region/incheon-powder.webp",
+      "action": "added",
+      "bytes": 107204,
+      "sha256": "060ae2b54109847b11c73245a39f0d33690c1e23c0589518ec091cb91f7089e7"
+    },
+    {
+      "path": "assets/images/region/incheon-retouch.webp",
+      "action": "added",
+      "bytes": 113910,
+      "sha256": "ecf13349f843e6e2d083cdfa44703a7ac1377be54ab21a2fdd3f2d516afb4fe9"
+    },
+    {
+      "path": "daegu/combo/index.html",
+      "action": "added",
+      "bytes": 11616,
+      "sha256": "88c98ce73e6e19bd4b4aeabd4426b867a976ba51e45a22bf0f8c71467751fc93"
+    },
+    {
+      "path": "daegu/index.html",
+      "action": "added",
+      "bytes": 13009,
+      "sha256": "29e1f9601cbc9d54fc41d67537b32df5421eb6ee8e2384753b34a74b6f736e95"
+    },
+    {
+      "path": "daegu/male/index.html",
+      "action": "added",
+      "bytes": 11686,
+      "sha256": "3d5e34dc2e42118501bc4ba61832d4e65a28fcddc25167f5f95bd5d891e7ae36"
+    },
+    {
+      "path": "daegu/natural/index.html",
+      "action": "added",
+      "bytes": 11671,
+      "sha256": "1f6cf31d67dd23344ad4b5ae03a5b968b9ce7c68484d621d6eecb9e9c1db0309"
+    },
+    {
+      "path": "daegu/powder/index.html",
+      "action": "added",
+      "bytes": 11648,
+      "sha256": "ede685019e3b0789615bc719c5ec0e76e49a2105c8c076abebb241438ab8ecc2"
+    },
+    {
+      "path": "daegu/retouch/index.html",
+      "action": "added",
+      "bytes": 11788,
+      "sha256": "ea3bb4fb448f0ee55f1bb53f0cd9b0feee0ba9aa7ac994d4bbaf1c7e2fba813d"
+    },
+    {
+      "path": "daejeon/combo/index.html",
+      "action": "added",
+      "bytes": 11640,
+      "sha256": "8da9e20541596cd8dd58086b6e4d853bd561c486491cf47ac6cbd0aeea7bdeb8"
+    },
+    {
+      "path": "daejeon/index.html",
+      "action": "added",
+      "bytes": 13112,
+      "sha256": "c86f29c31fdd2449a6f22127168bcdde3b1adff54092fb29fc934a99c0dc4c83"
+    },
+    {
+      "path": "daejeon/male/index.html",
+      "action": "added",
+      "bytes": 11717,
+      "sha256": "4ec432e8f9b610bd4d9fd86789f8152c0b9f647772f03226d79eb2c52de3ca08"
+    },
+    {
+      "path": "daejeon/natural/index.html",
+      "action": "added",
+      "bytes": 11673,
+      "sha256": "10f3155214fc31513072d937cb69460f4cde17b03044193ea8b5e6e74113939b"
+    },
+    {
+      "path": "daejeon/powder/index.html",
+      "action": "added",
+      "bytes": 11694,
+      "sha256": "e4b8cbb5bd778684f6016780ab9dc56c4419ef18868bce369d79abf8e16dd8d5"
+    },
+    {
+      "path": "daejeon/retouch/index.html",
+      "action": "added",
+      "bytes": 11799,
+      "sha256": "cda1b266a85b56c055b1c781adbb551e46229ecdd98c702607db00787f02c25b"
+    },
+    {
+      "path": "gwangju/combo/index.html",
+      "action": "added",
+      "bytes": 11656,
+      "sha256": "05bb34655be133ba58b6e0c29cd39957f5dda66944c92b4d79784289fd94e95e"
+    },
+    {
+      "path": "gwangju/index.html",
+      "action": "added",
+      "bytes": 13073,
+      "sha256": "e7360b44bb6d00f537dc3f647ef3de55448a01a4eae10c0be030d977697b7221"
+    },
+    {
+      "path": "gwangju/male/index.html",
+      "action": "added",
+      "bytes": 11750,
+      "sha256": "2203427be0d69acac951efbf032c26b285d4c3f1acfbb01564b225aad88f6b18"
+    },
+    {
+      "path": "gwangju/natural/index.html",
+      "action": "added",
+      "bytes": 11705,
+      "sha256": "b42c5acda7dcbdf4acaf5868282e87c6d38f63d61d19c8580f7d18f3543f2330"
+    },
+    {
+      "path": "gwangju/powder/index.html",
+      "action": "added",
+      "bytes": 11695,
+      "sha256": "7bf4791dc5bc715af6d00891ea647950e945747e8641a7fe7594a6d09f807b04"
+    },
+    {
+      "path": "gwangju/retouch/index.html",
+      "action": "added",
+      "bytes": 11827,
+      "sha256": "c8e798be9e84989d8f24d4bb545ca3a6280413c33eb75e6a10dc26cb80b6fdd7"
+    },
+    {
+      "path": "incheon/combo/index.html",
+      "action": "added",
+      "bytes": 11689,
+      "sha256": "1bae909d33534a3f5fa92dd281aa9bc24fb5a6593c5a2b4cc8e65eb7ace5843a"
+    },
+    {
+      "path": "incheon/index.html",
+      "action": "added",
+      "bytes": 13038,
+      "sha256": "e69106bf534f23f1e8cdc271d4baf654a38df2fd780364976e34b3232b879375"
+    },
+    {
+      "path": "incheon/male/index.html",
+      "action": "added",
+      "bytes": 11722,
+      "sha256": "60ce3b0ebe59e94b8b110567e911f7577d8f20b391dab4940427cd5efc0904fd"
+    },
+    {
+      "path": "incheon/natural/index.html",
+      "action": "added",
+      "bytes": 11737,
+      "sha256": "eb8019fe225f127a76a95fb21999ad304a8382e4c519cd95a2f028479727b41c"
+    },
+    {
+      "path": "incheon/powder/index.html",
+      "action": "added",
+      "bytes": 11678,
+      "sha256": "3ec2500b9d1de6cc3df660e7ae50f4a89f76e074a9ddbd89e744d768308d257d"
+    },
+    {
+      "path": "incheon/retouch/index.html",
+      "action": "added",
+      "bytes": 11765,
+      "sha256": "d73f5b00ec6bc5665a539fdbbe754952efd2c4ac4f7cc10461302db01f4096c7"
     },
     {
       "path": "rss.xml",
       "action": "modified",
-      "bytes": 12019,
-      "sha256": "b241af684bcc3e1b0cec378e4c9af1132132a1daf647b50121d142403d27f53f"
+      "bytes": 23959,
+      "sha256": "53334f4f3501e51b5f802aafe0417ffaa52c1d66f53d93b7936eb2b6b0b614ac"
     },
     {
       "path": "sitemap.xml",
       "action": "modified",
-      "bytes": 2897,
-      "sha256": "ec2c58719dfa5fde2cf79d4740656c734b798252533a1abe403b13a26cf35e05"
+      "bytes": 5493,
+      "sha256": "fb2415867aaeca21c4c4ccfacda9e6e18db6240e0696277a831b869a1ffad6a5"
     }
   ]
 }
